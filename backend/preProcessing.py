@@ -1,8 +1,5 @@
-import re
+from extract_URL import extract_url_and_text
+paragraph = "This is a long paragraph with a link https://example.com/pagejshfs/sdfksjdf/sssss inside the text."
 
-def clean_text(text):
-    text = text.lower()
-    text = re.sub(r'\s+',' ',text)
-    text = re.sub(r'[^\w\s₹]', '', text) # square and negation means anything not in this list
-    text.strip()
-    return text
+url, clean_text = extract_url_and_text(paragraph)
+#a file url extractor function ku call kariki text auu function ku alaga alaga karuchi

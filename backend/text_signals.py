@@ -50,11 +50,3 @@ LANGUAGE_PATTERNS = [
     "limited time offer", "free certificate"
 ]
 
-# Checking message and detecting them from predefined lists
-def keyword_match(text,keywords):
-    return any(word in text for word in keywords) # Checking text by using keywords
-def detect_scam_signals(text):
-    text = clean_text(text) # cleaning the text
-    signals = [] #  empty list that will store scam warnings
-if keyword_match(text,URGENT_KEYWORDS):
-    signals.append("URGENT")

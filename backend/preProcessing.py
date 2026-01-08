@@ -1,5 +1,5 @@
 from extract_URL import extract_url_and_text
-paragraph = "This is a long paragraph with a link https://example.com/pagejshfs/sdfksjdf/sssss inside the text."
+paragraph = "This is a long paragraph      @@@ 2###$$$ with gibe me money i need money payment       a link http://chatgpt.com/c/695fc963-d51c-8333-80d1-3edf93b58671 inside the text."
 
-url, clean_text = extract_url_and_text(paragraph)
+url, withoutURL_text = extract_url_and_text(paragraph)
 #a file url extractor function ku call kariki text auu function ku alaga alaga karuchi

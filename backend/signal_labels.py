@@ -7,3 +7,4 @@ HUMAN_READABLE_SIGNALS = {
     "CONTACT_KEYWORDS": "Unprofessional contact method detected",
     "LANGUAGE_PATTERNS": "Suspicious language patterns"
 }
+#show the output that , user know what type of error

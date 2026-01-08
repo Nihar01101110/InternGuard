@@ -1,5 +1,3 @@
-from preProcessing import clean_text
-
 #Predefined set of Lists
 URGENT_KEYWORDS = [
     "limited slots", "last date", "apply today", "apply now",

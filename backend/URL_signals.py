@@ -1,9 +1,7 @@
-from preProcessing import url
 import re
+import math
 from urllib.parse import urlparse
-#URL=url
-URL="https://chatgpt.com/c/695fc5b3-dd3c-8327-9d59-4793e492f977"
-
+from preProcessing import url
 SUSPICIOUS_TLDS = [
     ".xyz", ".tk", ".ml", ".ga", ".cf", ".gq", ".top", ".zip"
 ]
@@ -20,104 +18,112 @@ CAREER_KEYWORDS = [
     "internship", "career", "job", "hiring", "apply", "placement"
 ]
 
-
-def normalize_url(url):
-    return url.strip().lower()
-
-
-def extract_url_parts(url):
-    parsed = urlparse(url)
-    domain = parsed.netloc
-    scheme = parsed.scheme
-    return scheme, domain
-
+WEIGHTS = {
+    "http": 1.2,
+    "tld": 1.8,
+    "brand": 2.5,
+    "hyphen": 0.8,
+    "keyword": 1.0,
+    "length": 0.6,
+    "ip": 2.0
+}
 
 def is_ip_address(domain):
-    ip_pattern = r"^\d{1,3}(\.\d{1,3}){3}$"
-    return re.match(ip_pattern, domain) is not None
+    pattern = r"\d{1,3}(\.\d{1,3}){3}"
+    return re.fullmatch(pattern, domain) is not None
 
+def extract_features(url):
+    parsed_url = urlparse(url.lower())
+    domain = parsed_url.netloc
 
+    features = {}
 
-def check_https(scheme, signals):
-    risk = 0
-    if scheme != "https":
-        risk += 20
-        signals.append("Uses HTTP instead of HTTPS")
-    return risk
+  
+    if parsed_url.scheme == "https":
+        features["http"] = 0
+    else:
+        features["http"] = 1
 
-
-def check_suspicious_tld(domain, signals):
-    risk = 0
+ 
+    features["tld"] = 0
     for tld in SUSPICIOUS_TLDS:
         if domain.endswith(tld):
-            risk += 25
-            signals.append(f"Suspicious TLD detected ({tld})")
+            features["tld"] = 1
             break
-    return risk
 
+    
+    features["brand"] = 0
 
-def check_brand_impersonation(domain, signals):
-    risk = 0
-    for brand, official_domains in BRAND_DOMAINS.items():
+    for brand in BRAND_DOMAINS:
         if brand in domain:
-            if not any(domain.endswith(official) for official in official_domains):
-                risk += 30
-                signals.append(f"Possible brand impersonation ({brand})")
-    return risk
+            valid_domains = BRAND_DOMAINS[brand]
 
+            is_legit = False
+            for legit_domain in valid_domains:
+                if domain.endswith(legit_domain):
+                    is_legit = True
+                    break
 
-def check_hyphens(domain, signals):
-    risk = 0
+            if is_legit == False:
+                features["brand"] = 1
+                break
+
+  
     hyphen_count = domain.count("-")
-    if hyphen_count >= 2:
-        risk += 10
-        signals.append("Multiple hyphens found in domain")
-    return risk
+
+    if hyphen_count >= 5:
+        features["hyphen"] = 1
+    else:
+        features["hyphen"] = hyphen_count / 5
 
 
-def check_keywords(url, signals):
-    risk = 0
-    for keyword in CAREER_KEYWORDS:
-        if keyword in url:
-            risk += 15
-            signals.append(f"Suspicious keyword detected ({keyword})")
+    features["keyword"] = 0
+    for word in CAREER_KEYWORDS:
+        if word in url:
+            features["keyword"] = 1
             break
-    return risk
 
+    
+    url_length = len(url)
 
-def check_url_length(url, signals):
-    risk = 0
-    if len(url) > 75:
-        risk += 10
-        signals.append("URL length is unusually long")
-    return risk
+    if url_length >= 100:
+        features["length"] = 1
+    else:
+        features["length"] = url_length / 100
 
-
-def check_ip_usage(domain, signals):
-    risk = 0
+   
     if is_ip_address(domain):
-        risk += 25
-        signals.append("IP address used instead of domain name")
-    return risk
+        features["ip"] = 1
+    else:
+        features["ip"] = 0
+
+    return features
+
+
+
+
+def calculate_probability(features):
+    score = 0
+
+    for feature in features:
+        score += features[feature] * WEIGHTS[feature]
+
+    
+    probability = 1 / (1 + math.exp(-score))
+    return probability
 
 
 
 def analyze_url(url):
-    url = normalize_url(url)
-    scheme, domain = extract_url_parts(url)
+    features = extract_features(url)
+    probability = calculate_probability(features)
 
-    risk_score = 0
-    signals = []
+    
+    risk_percentage = round(probability * 100, 2)
+    return risk_percentage
 
-    risk_score += check_https(scheme, signals)
-    risk_score += check_suspicious_tld(domain, signals)
-    risk_score += check_brand_impersonation(domain, signals)
-    risk_score += check_hyphens(domain, signals)
-    risk_score += check_keywords(url, signals)
-    risk_score += check_url_length(url, signals)
-    risk_score += check_ip_usage(domain, signals)
-
-
-    return risk_score
-a=analyze_url(URL)#store the url and variable is a
-#if the value of "a" is more than 20 or 25 then danger and if the value of the a ir more than 50 then very dangerous
+user_url=url
+user_url=user_url.strip()
+risk = analyze_url(user_url)
+print("Risk Score:", risk, "%")
+#it gives risk as a vatiable which contains the risk of the url

@@ -1,6 +1,6 @@
 # Checking message and detecting them from predefined lists
 
-from preProcessing import clean_text
+from cleanText import text
 from text_signals import (
     URGENT_KEYWORDS,
     PAYMENT_KEYWORDS,
@@ -13,7 +13,6 @@ from text_signals import (
 def keyword_match(text,keywords):
     return any(word in text for word in keywords) # Checking text by using keywords
 def detect_scam_signals(text):
-    text = clean_text(text) # cleaning the text
     signals = [] #  empty list that will store scam warnings
 
     if keyword_match(text, URGENT_KEYWORDS):
@@ -38,3 +37,10 @@ def detect_scam_signals(text):
             signals.append("BENEFIT_KEYWORDS")
 
     return signals
+
+
+
+
+FinalText=text
+
+Array_Of_Data=detect_scam_signals(FinalText)

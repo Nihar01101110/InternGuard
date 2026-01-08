@@ -1,7 +1,5 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from flask import Flask, request, jsonify
-from flask_cors import CORS
 
 from signal_labels import HUMAN_READABLE_SIGNALS
 from text_signals_detection import detect_scam_signals

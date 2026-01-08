@@ -1,5 +1,3 @@
-from flask import signals
-
 from preProcessing import clean_text
 
 #Predefined set of Lists

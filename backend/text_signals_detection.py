@@ -17,24 +17,24 @@ def detect_scam_signals(text):
     signals = [] #  empty list that will store scam warnings
 
     if keyword_match(text, URGENT_KEYWORDS):
-          signals.append("Urgent language used")
+          signals.append("URGENT_KEYWORDS")
 
     if keyword_match(text, PAYMENT_KEYWORDS):
-        signals.append("Upfront payment requested")
+        signals.append("PAYMENT_KEYWORDS")
 
     if keyword_match(text, GUARANTEE_KEYWORDS):
-        signals.append("Unrealistic guarantees")
+        signals.append("GUARANTEE_KEYWORDS")
 
     if keyword_match(text, BENEFIT_KEYWORDS):
-        signals.append("Unrealistic benefits promised")
+        signals.append("BENEFIT_KEYWORDS")
 
     if keyword_match(text, AUTHORITY_KEYWORDS):
-        signals.append("Unrealistic benefits promised")
+        signals.append("AUTHORITY_KEYWORDS")
 
     if keyword_match(text, CONTACT_KEYWORDS):
-         signals.append("Unprofessional contact method")
+         signals.append("CONTACT_KEYWORDS")
 
     if keyword_match(text, BENEFIT_KEYWORDS):
-            signals.append("Unrealistic benefits promised")
+            signals.append("BENEFIT_KEYWORDS")
 
     return signals

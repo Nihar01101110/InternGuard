@@ -1,4 +1,14 @@
 import random
+from text_signals_detection import detect_scam_signals
+from text_signals import (
+    URGENT_KEYWORDS,
+    PAYMENT_KEYWORDS,
+    GUARANTEE_KEYWORDS,
+    BENEFIT_KEYWORDS,
+    AUTHORITY_KEYWORDS,
+    CONTACT_KEYWORDS,
+    LANGUAGE_PATTERNS
+)
 
 RISK_MEANS = {
     "URGENT_KEYWORDS": 5,

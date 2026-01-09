@@ -1,7 +1,6 @@
 import re
 import math
 from urllib.parse import urlparse
-from preProcessing import url
 SUSPICIOUS_TLDS = [
     ".xyz", ".tk", ".ml", ".ga", ".cf", ".gq", ".top", ".zip"
 ]
@@ -121,9 +120,3 @@ def analyze_url(url):
     
     risk_percentage = round(probability * 100, 2)
     return risk_percentage
-
-user_url=url
-user_url=user_url.strip()
-risk = analyze_url(user_url)
-print("Risk Score:", risk, "%")
-#it gives risk as a vatiable which contains the risk of the url

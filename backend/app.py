@@ -75,58 +75,58 @@ def analyze():
     return jsonify(result)
 
 
-# @app.route("/check")
-# def fun():
-#     message = "https://www.youtube.com/watch?v=KDHpOUpPwvQ&list=RDd9WOgugZQm4&index=5" \
-#     ""
-#     #doing coding again
-#     url , text_without_url=extract_url_and_text(message)# extract url from the text 
-#     user_url=url
-#     user_url=user_url.strip()
-#     risk = analyze_url(user_url)#complete of the URL part
+@app.route("/check")
+def fun():
+    message = "https://www.youtube.com/watch?v=KDHpOUpPwvQ&list=RDd9WOgugZQm4&index=5" \
+    ""
+    #doing coding again
+    url , text_without_url=extract_url_and_text(message)# extract url from the text 
+    user_url=url
+    user_url=user_url.strip()
+    risk = analyze_url(user_url)#complete of the URL part
 
-#     # text_without_url also store the value of the files that does not changes
-
-
-#     #these are the logics of calculations
-#     url_risk = risk   # assume this is already a number between 0–100
-
-#     message = text_without_url
-#     message = clean_text(message)
-#     categories = detect_scam_signals(message)
-#     text_risk_score, text_risk_level = evaluate_message_risk(categories)
+    # text_without_url also store the value of the files that does not changes
 
 
-#     readable_signals = [HUMAN_READABLE_SIGNALS[cat] for cat in categories]
+    #these are the logics of calculations
+    url_risk = risk   # assume this is already a number between 0–100
 
-#     TEXT_WEIGHT = 0.60
-#     URL_WEIGHT = 0.40
-
-#     final_risk_score = (
-#         text_risk_score * TEXT_WEIGHT +
-#         url_risk * URL_WEIGHT
-#     )
-
-#     if final_risk_score >= 75:  
-#         final_risk_level = "High"
-#     elif final_risk_score >= 40:    
-#         final_risk_level = "Medium"
-#     else:
-#         final_risk_level = "Low"
-
-#     result = {
-#         "final_risk_score": round(final_risk_score, 2),
-#         "final_risk_level": final_risk_level,
-#         "text_risk_score": round(text_risk_score, 2),
-#         "url_risk_score": round(url_risk, 2),
-#         "signals_detected": readable_signals
-# }
-
-#     print("Final Risk Evaluation:")
-#     print(result)
+    message = text_without_url
+    message = clean_text(message)
+    categories = detect_scam_signals(message)
+    text_risk_score, text_risk_level = evaluate_message_risk(categories)
 
 
-#     return jsonify(result)
+    readable_signals = [HUMAN_READABLE_SIGNALS[cat] for cat in categories]
+
+    TEXT_WEIGHT = 0.60
+    URL_WEIGHT = 0.40
+
+    final_risk_score = (
+        text_risk_score * TEXT_WEIGHT +
+        url_risk * URL_WEIGHT
+    )
+
+    if final_risk_score >= 75:  
+        final_risk_level = "High"
+    elif final_risk_score >= 40:    
+        final_risk_level = "Medium"
+    else:
+        final_risk_level = "Low"
+
+    result = {
+        "final_risk_score": round(final_risk_score, 2),
+        "final_risk_level": final_risk_level,
+        "text_risk_score": round(text_risk_score, 2),
+        "url_risk_score": round(url_risk, 2),
+        "signals_detected": readable_signals
+}
+
+    print("Final Risk Evaluation:")
+    print(result)
+
+
+    return jsonify(result)
 
     
 

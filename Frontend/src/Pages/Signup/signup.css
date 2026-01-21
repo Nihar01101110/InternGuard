@@ -1,0 +1,82 @@
+.signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background:linear-gradient(#0b004e ,#1d152f ,#002834 );
+}
+
+.form-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.form-toggle {
+  display: flex;
+  justify-content:space-between;
+  margin-bottom: 20px;
+  gap: 5px;
+}
+
+.form-toggle button{
+  width: 50%;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 10px 10px 10px 10px;
+  background-color: #033452;
+  color: white;
+}
+
+.form-toggle .active {
+    border: 0.5px solid #9ecaed ;
+    background: #7927ff;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 5px #9ecaed;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  color: black;
+}
+
+.form h2 {
+  margin-bottom: 20px;
+}
+
+.form input{
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.form button {
+  padding: 10px;
+  background-color:#033452;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form a {
+  color: #007bff;
+  text-decoration: none;
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+.form p {
+  text-align: center;
+}

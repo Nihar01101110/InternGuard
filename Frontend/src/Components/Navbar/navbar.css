@@ -7,7 +7,7 @@
     color: #ddd;
     border-bottom: 1px solid #3c3c3c;
     box-shadow: 0 3px 6px rgba(60, 60, 60, 0.6);
-    background-color: #0b004e ;
+    background-color: whitesmoke;
 
     position: sticky;
     top: 0px;
@@ -30,9 +30,13 @@ ul{
     display: flex;
     gap: 40px;
     list-style:none;
+
 }
 li{
     cursor: pointer;
+    border: 0.2px solid #818181;
+    border-radius: 10px
+
 
 }
 .nav-right{

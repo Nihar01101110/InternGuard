@@ -9,6 +9,9 @@ import { useNavigate } from 'react-router-dom'
 const Home = () => {
   const navigate = useNavigate();
   const handleSignIn=()=>{
+    navigate("/Signup")
+  }
+  const handleSignIntwo=()=>{
     navigate("/search")
   }
 
@@ -41,9 +44,8 @@ const Home = () => {
         <div className='block' id="buttom">
             <h2 id='heading'>Get Started</h2>
             <div id="btn">
-
                 <button onClick={handleSignIn} className='buttonone'>Signup</button>
-                <button onClick={handleSignIn} className='buttonone'>Guest</button>
+                <button onClick={handleSignIntwo} className='buttonone'>Guest</button>
             
             </div>
         </div>

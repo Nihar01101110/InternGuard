@@ -3,37 +3,6 @@
     height: 100vh;
     display: flex;
     flex-direction: row;
-    background-color:rgb(1, 36, 92);
+   background:linear-gradient(#0b004e ,#1d152f ,#002834 );
 }
-.lefttwo{
-    height: 100%;
-    width: 60%;
-   background:linear-gradient(#0b004e ,#1d152f ,#002834 ); 
-}
-.righttwo{
-    background:linear-gradient(18deg ,#0b004e ,#1d152f ,#002834 );
-    width: 40%;
-    height: 100vh;
 
-    display: flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:end;
-}
-textarea{
-    
-    width: 90%;
-    height: 50px;
-    padding-left: 10px;
-    padding-top: 5px;
-    font-size: 14px;
-    resize: none;
-
-    margin: 25px;
-
-    border:0.5px solid #9ecaed;   
-    outline: none;
-    box-shadow: 0 0 5px #9ecaed;
-    border-radius:8px ;
-   
-}

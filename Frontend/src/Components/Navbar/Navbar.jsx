@@ -9,19 +9,20 @@ const Navbar = () => {
       <div className='right'>
 
             <ul>
-                <li><button className='buttontwo'><NavLink to="/" style={({isActive})=>({
+                <li><button className='buttontwo'><NavLink to="/search" style={({isActive})=>({
                   color:isActive?"black":"",
                   color:isActive?"white":"",
                   textDecoration:"none",
                 
                 })}>Home</NavLink></button></li>
-                <li><button className='buttontwo'><NavLink to="/Result" style={({isActive})=>({
+
+                <li><button className='buttontwo'><NavLink to="/Howitworks" style={({isActive})=>({
                   color:isActive?"black":"",
                   color:isActive?"white":"",
                   textDecoration:"none",
                  })}> How it works</NavLink> </button></li>
 
-                <li><button className='buttontwo'><NavLink to="/Result" style={({isActive})=>({
+                <li><button className='buttontwo'><NavLink to="/About" style={({isActive})=>({
                   color:isActive?"black":"",
                   textDecoration:"none",
                   color:isActive?"white":"",
@@ -30,7 +31,7 @@ const Navbar = () => {
             </ul>
 
             <div className="nav-right">
-                <button className='buttonone'><NavLink to="/" style={({isActive})=>({
+                <button className='buttonone'><NavLink to="/Signup" style={({isActive})=>({
                   textDecoration:"none",
                 })}>Sign up</NavLink></button>
             </div>

@@ -45,13 +45,10 @@ def analyze():
 
     readable_signals = [HUMAN_READABLE_SIGNALS[cat] for cat in categories]
 
-    TEXT_WEIGHT = 0.60
-    URL_WEIGHT = 0.40
+    final_risk_score= max(url_risk, text_risk_score)
 
-    final_risk_score = (
-        text_risk_score * TEXT_WEIGHT +
-        url_risk * URL_WEIGHT
-    )
+    if url_risk > 60 and text_risk_score > 60:
+        final_risk_score = min(100, final_risk_score + 15)
 
     if final_risk_score >= 75:  
         final_risk_level = "High"
@@ -99,13 +96,11 @@ def fun():
 
     readable_signals = [HUMAN_READABLE_SIGNALS[cat] for cat in categories]
 
-    TEXT_WEIGHT = 0.60
-    URL_WEIGHT = 0.40
+    final_risk_score = max(url_risk, text_risk_score)
 
-    final_risk_score = (
-        text_risk_score * TEXT_WEIGHT +
-        url_risk * URL_WEIGHT
-    )
+    if url_risk > 60 and text_risk_score > 60:
+        final_risk_score = min(100, final_risk_score + 15)
+    
 
     if final_risk_score >= 75:  
         final_risk_level = "High"

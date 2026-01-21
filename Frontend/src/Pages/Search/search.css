@@ -27,15 +27,30 @@
     font-weight: 600;
 }
 .input{
-    height: 40px;
     width: 400px;
+    max-width: 400px;
 
-    border-radius: 8px;
-    font-size: 16px;
-    border:0.5px solid #9ecaed;   
+    min-height: 20px;
+    max-height: 200px;
+
+    padding: 12px 14px;
+    border-radius: 12px;
+    border:0.5px solid #9ecaed; 
     outline: none;
+    box-sizing: border-box;
+
+    /* resize: none;
+    white-space:pre-wrap;
+    word-break: break-word;
+    overflow:hidden;
+    overflow-wrap: break-word; */
+    font-size: 16px; 
     box-shadow: 0 0 8px #9ecaed;
     padding-left: 14px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-behavior: smooth;
 }
 .buttonone{
     border: 0.5px solid #9ecaed ;
@@ -57,9 +72,12 @@ button:active{
     transform: scale(0.95);
     box-shadow: 0 4px 8px rgba(13, 56, 118, 0.5);
 }
-.form{
+#form{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 5px;
+    
 }
 
 .error-text{
@@ -102,6 +120,7 @@ button:active{
 }
 .result-card li{
     margin-bottom: 6px;
+    padding: 10px;
 }
 @media(max-width:600px){
     .search-form{

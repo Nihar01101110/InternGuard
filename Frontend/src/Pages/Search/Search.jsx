@@ -43,6 +43,7 @@ const Search = () => {
     }finally{
     setLoading(false);
     }
+
   };
 
 
@@ -51,8 +52,8 @@ const Search = () => {
       <div className='search-bar'>
         <p className='pone'>Paste your Text or URL here</p>
         
-        <form className='form' onSubmit={handleSearch}>
-          <input 
+        <form id='form' onSubmit={handleSearch}>
+          <textarea 
               className='input'  
               placeholder='paste your text or url here' 
               value={text} 

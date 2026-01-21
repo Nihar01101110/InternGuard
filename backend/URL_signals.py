@@ -16,15 +16,20 @@ BRAND_DOMAINS = {
 CAREER_KEYWORDS = [
     "internship", "career", "job", "hiring", "apply", "placement"
 ]
+SUSPICIOUS_DOMAIN_WORDS=[
+    "offer","fast","free","instant","win","gurantee"
+]
+
 
 WEIGHTS = {
     "http": 1.2,
     "tld": 1.8,
     "brand": 2.5,
     "hyphen": 0.8,
-    "keyword": 1.0,
+    "keyword": 2.0,
     "length": 0.6,
     "ip": 2.0
+    "suspicious_word":2.0
 }
 
 def is_ip_address(domain):
@@ -39,7 +44,7 @@ def extract_features(url):
 
   
     if parsed_url.scheme == "https":
-        features["http"] = 0
+        features["http"] = 0.3
     else:
         features["http"] = 1
 
@@ -70,10 +75,10 @@ def extract_features(url):
   
     hyphen_count = domain.count("-")
 
-    if hyphen_count >= 5:
+    if hyphen_count >= 2:
         features["hyphen"] = 1
     else:
-        features["hyphen"] = hyphen_count / 5
+        features["hyphen"] = hyphen_count / 2
 
 
     features["keyword"] = 0
@@ -95,6 +100,12 @@ def extract_features(url):
         features["ip"] = 1
     else:
         features["ip"] = 0
+
+    features["suspicious_word"] = 0
+    for word in SUSPICIOUS_DOMAIN_WORDS:
+        if word in domain:
+            features["suspicious_word"] = 1
+            break
 
     return features
 

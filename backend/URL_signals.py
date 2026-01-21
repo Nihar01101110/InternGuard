@@ -125,6 +125,8 @@ def calculate_probability(features):
 
 
 def analyze_url(url):
+    if url == "" or url is None:
+        return 0.0 
     features = extract_features(url)
     probability = calculate_probability(features)
 
